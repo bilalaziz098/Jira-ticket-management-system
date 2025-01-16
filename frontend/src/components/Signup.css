@@ -1,0 +1,160 @@
+.loginDiv{
+  min-width: 200px;
+  min-height: 200px;
+  margin: auto;
+  padding: 0 50px;
+  text-align: center;
+  background-color: white;
+  width: 15%;
+  margin-top: 70px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+}
+
+h2{
+  color: rgb(0,82,204);
+
+}
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+} 
+
+
+/* .nav{
+  padding: 0 2rem;
+}
+.nav > ul{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+} */
+.nav1{
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: center;
+  gap: 20px;
+}
+/* .nav2{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+} */
+
+li{
+  padding: 0 10px;
+}
+
+h4{
+  margin-top: 0px;
+  color: #11225a;
+  font-weight: 500;
+}
+
+.formDiv{
+  align-items: center;
+  gap: 10px;
+}
+
+.formDiv > input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 3px;
+  }
+.formDiv > input[type=text]:focus{
+  border: 2px solid rgb(50, 174, 212);
+}
+.formDiv > input[type=password]:focus{
+  border: 2px solid rgb(50, 174, 212);
+}
+.formDiv > p {
+  margin: 0px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.formBtn {
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(12,102,228);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+h5{
+  color: rgb(94,108,132);
+  font-weight: 500;
+}
+.signinOptions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.signinOptions > button {
+  
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.signinOptions > button > img {
+  height: 25px;
+}
+
+.signupOptions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  gap: 10px;
+  font-weight: 600;
+  color: #234bcf;
+  
+}
+
+.signupOptions > p {
+  cursor: pointer;
+}
+
+.footer{
+  color:rgb(102, 102, 102) ;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.bottom{
+  padding-bottom: 10px;
+}
+.bottom > p{
+  font-size: 12px;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+span {
+  font-size: 12px;
+  color: #234bcf;
+}
+span:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

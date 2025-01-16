@@ -1,0 +1,74 @@
+.sidenav{
+  width: 240px;
+  background-color:rgb(244,245,247);
+  position: absolute;
+  height: 93vh;
+  padding-left: 20px;
+  left: -100%;
+  transition: all 1s;
+}
+
+.sidenav.active {
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logout{
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.logout:hover{
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(216, 149, 149);
+}
+
+.logout > li {
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.sidebarNav{
+  padding-left: 1px;
+
+}
+
+.sidebarNav li {
+  margin: 10px 0;
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.sidebarNav li a {
+  /* color: rgb(61,110,205); */
+  color: rgb(87, 87, 87);
+  font-weight: 400;
+  font-size: 16px;
+  display: block;
+  padding: 10px 15px 10px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.sidebarNav li:hover, a:hover{
+  cursor: pointer;
+  background-color:rgb(235,236,240);
+  color: rgb(61,110,205);
+  border-radius: 5px;
+}
+.icons2{
+  color: rgb(31, 46, 68);
+  font-size: 23px;
+  cursor: pointer;
+}
+.icons2:hover{
+  color: rgb(61,110,205);
+  font-size: 23px;
+  cursor: pointer;
+}

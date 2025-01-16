@@ -1,0 +1,17 @@
+.nav{
+  padding: 0 2rem;
+}
+.nav > ul{
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.nav1{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+li{
+  padding: 0 10px;
+}

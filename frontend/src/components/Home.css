@@ -1,0 +1,168 @@
+.loginNav{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.content {
+  transition: all 1s ;
+  margin: 0 2rem;
+}
+
+.shift-left {
+  margin-left: 300px;
+}
+
+.links{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  cursor: pointer;
+}
+
+a.active {
+  color: rgb(0, 68, 255);
+  padding: 10px 0;
+  border-bottom: 1px solid blue;
+}
+
+.links > input {
+  padding: 5px;
+  margin-top: 2px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: lightgray;
+}
+
+.links > button {
+  background-color: rgb(0, 119, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
+
+li ,a {
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.icons{
+  color: rgb(31, 46, 68);
+  font-size: 23px;
+  cursor: pointer;
+}
+
+
+
+.project-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-head > div{ 
+  display: flex;
+  gap: 15px;
+}
+
+.usericon{
+  color: rgb(31, 46, 68);
+  font-size: 30px;
+  cursor: pointer;
+}
+.breaker{ 
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.container{
+  overflow-y: scroll;
+  height: 870px;
+}
+
+.tickets{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.cards {
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: rgb(244, 245, 247);
+  width: 325px;
+  min-height: 200px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column; /* Makes the content stack vertically */
+}
+/* .cards{
+  
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: rgb(244, 245, 247);
+  width: 325px;
+  transition: all 0.3s ease-in-out; 
+} */
+.createIssue {
+  opacity: 0;
+
+}
+.createIssue:hover{
+  opacity: 1;
+}
+.createIssue> h3{
+  padding: 0px 0 0 20px;
+  color: rgb(100, 100, 100);
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  align-items: center;
+  margin: 10px 0px;
+  
+}
+.createIssue > h3 >span {
+  color: rgb(100, 100, 100);
+  background-color: rgb(226, 226, 226);
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+.cards > p {
+  padding: 0px 0 0 20px;
+  color: rgb(100, 100, 100);
+  font-size: 13px;
+}
+.cards > h3 {
+  padding: 0px 0 0 20px;
+  color: rgb(100, 100, 100);
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  margin: 0;
+  margin: 10px 0px;
+  align-items: center;
+}
+.cards > h3 >span {
+  color: rgb(100, 100, 100);
+}
+
+.issuesCreated {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background-color: rgb(254, 254, 254);
+  cursor: grab;
+}
+.issuesCreated > h4 {
+  margin: 0;
+}
+
+.issuesCreated:active {
+  cursor: grabbing;
+  opacity: 0.8;
+}

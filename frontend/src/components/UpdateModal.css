@@ -1,0 +1,273 @@
+.modal1{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalContainer1{
+  position: fixed;
+  width: 80%;
+  height: 750px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px 50px;
+  text-align: left;
+}
+
+.modalDivs{
+  display: flex;
+  gap: 10px;
+}
+
+.description{
+  margin: 0;
+  margin-top: 20px;
+  overflow-y: scroll;
+}
+.description > h4{
+  color: rgb(68, 68, 68);
+  font-weight: 700;
+}
+.description> p{
+  color: rgb(68, 68, 68);
+  padding: 0 10px 0 0;
+  font-size: medium;
+}
+.btn{
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  width: 80px;
+  border-radius: 5px;
+  background-color: rgb(218, 46, 46);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.btnSave{
+  padding: 10px;
+  width: 80px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(64, 189, 39);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.div1{
+  width: 65%;
+  /* overflow-y: scroll; */
+}
+
+.div2{
+  width: 33%;
+}
+
+.details{
+  border: 1px solid rgb(190, 190, 190);
+  width: 100%;
+  margin: 20px 0px 0 0 ;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  justify-content: space-between;
+  transition: all .7s;
+}
+.details:hover{
+  border: 1px solid purple;
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+  height: 550px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dropdownContent {
+  margin-top: 0px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: all 1s ;
+}
+
+.details p {
+  margin: 5px 0;
+}
+.content1{
+  display: flex;
+  flex-direction: column;
+  color: #4e4e4e;
+  font-weight: 700;
+  gap: 7px;
+}
+.content2{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comment{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment > input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 5px;
+}
+.btns2{
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btns2> button{
+  background-color: rgb(235, 235, 235);
+  color: rgb(68, 68, 68);
+  font-weight: 600;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 7px;
+  transition: all .7s;
+}
+
+.btns2> button:hover {
+
+  cursor: pointer;
+  border: 2px solid purple;
+}
+
+.editBtn{
+
+  background-color: rgb(221, 221, 221);
+  color: rgb(32, 32, 32);
+  padding: 10px;
+  width: 80px;
+  transition: all .7s;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;}
+
+
+  .editTitle { 
+    padding: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 3px;
+    
+  }
+.editTitle[type=text]:focus{
+  border: 2px solid rgb(50, 174, 212);
+}
+.editTitle[type=password]:focus{
+  border: 2px solid rgb(50, 174, 212);
+}
+
+.titleDivs > h3{
+  margin: 0;
+}
+
+.descDiv{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.descDiv > h4{
+  margin: 0;
+}
+.btnDiv{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+.status > select{
+  background-color: rgb(235, 235, 235);
+  color: rgb(68, 68, 68);
+  font-weight: 600;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 7px;
+  transition: all .7s;
+}
+
+.status > select:hover{
+  cursor: pointer;
+  border: 2px solid purple;
+}
+
+.editBtn:hover{
+  cursor: pointer;
+  border: 2px solid purple;
+}
+
+.assigneeDiv{
+  /* padding: 20px; */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.assigneeDiv > select {
+  padding: 10px;
+}
+
+
+
+
+
+.table-style {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table-style th, .table-style td {
+  padding: 15px;
+  
+  text-align: left;
+}
+
+.table-style select {
+  /* padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  border: 1px solid #ccc; */
+  background-color: rgb(235, 235, 235);
+  color: rgb(68, 68, 68);
+  font-weight: 600;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 7px;
+  transition: all .7s;
+}
+.table-style select:hover {
+  cursor: pointer;
+  border: 2px solid purple;
+}
+
+.table-style td select {
+  width: 75%;
+}
+.td {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.td1{
+  display: grid;
+  color: blue;
+  align-items: center;
+}

@@ -1,0 +1,131 @@
+.modal{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalContainer{
+  position: fixed;
+  width: 700px;
+  max-height: 800px;
+  overflow-y: scroll;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px 30px;
+  text-align: left;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title > p{
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn1{
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(133, 133, 133);
+}
+
+.ticketForm{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 10px;
+  color: rgb(104, 104, 104);
+}
+
+.label{
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+select {
+  padding: 7px 150px 7px 5px;
+  color: rgb(78, 78, 78);
+  background-color: rgb(243, 243, 243);
+  border: .5px solid lightgrey;
+}
+
+.ticketForm > p {
+  color: rgb(133, 133, 133); 
+  font-size: 12px;
+}
+
+.modalend{
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  align-items: center;
+}
+
+.create{
+  background-color: rgb(0, 119, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+.cancel{
+  font-weight: 500;
+  color: rgb(0, 119, 255);
+  cursor: pointer;
+}
+.file{
+  padding: 5px 100px;
+  border: 1px dashed gainsboro;
+
+}
+.summary{
+  width: 100%;
+}
+
+.summary > p{
+  color: rgb(133, 133, 133); 
+  font-size: 12px;
+  margin: 0;
+  margin-top: 15px;
+}
+.summary > input{
+  width: 100%;
+  padding: 8px 5px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  transition: 0.5s;
+  outline: none;
+}
+.summary > input[type=text]:focus{
+  border: 2px solid rgb(50, 174, 212);
+}
+.description1 > p {
+  color: rgb(133, 133, 133); 
+  font-size: 12px;
+  margin: 0;
+  margin-top: 10px;
+}
+.desc{
+  border: 1px solid rgb(206, 206, 206);
+  box-sizing: border-box;
+
+}
+.editor{
+  width: 700px;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
