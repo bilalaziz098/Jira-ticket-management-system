@@ -86,7 +86,6 @@ function Home() {
           </div>
           <div className="links">
             <input type="search" />
-            <p></p>
             <p>{user.user.name}</p>
             <FaUserCircle className="icons" />
           </div>
