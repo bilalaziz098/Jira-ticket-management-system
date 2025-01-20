@@ -1,12 +1,12 @@
-.loginDiv{
+.signupDiv{
   min-width: 200px;
   min-height: 200px;
   margin: auto;
+  margin-top: 30px;
   padding: 0 50px;
   text-align: center;
   background-color: white;
   width: 15%;
-  margin-top: 70px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
 }
@@ -157,4 +157,22 @@ span {
 span:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+
+.status1{
+  transition: all .7s;
+  width: 100%;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.status1:focus{
+  
+  border: 2px solid rgb(50, 174, 212);
 }

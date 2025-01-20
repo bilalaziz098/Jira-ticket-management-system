@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [name, setName] = useState("");
+  const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
@@ -36,6 +37,7 @@ function Signup() {
     try {
       const response = await axios.post("http://localhost:3000/signup", {
         name: name,
+        role: role,
         email: email,
         password: pass,
       });
@@ -63,7 +65,7 @@ function Signup() {
         />
       </div>
 
-      <div className="loginDiv">
+      <div className="signupDiv">
         <div className="head">
           <FaAtlassian style={{ color: "rgb(17,104,226)", fontSize: "20px" }} />
           <h2>ATLASSIAN</h2>
@@ -76,6 +78,18 @@ function Signup() {
             placeholder="Enter your Full Name"
             onChange={(event) => setName(event.target.value)}
           />
+          <select
+            name="role"
+            className="status1"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option>Select your role</option>
+            <option>Admin</option>
+            <option>Project Manager</option>
+            <option>Developer</option>
+            <option>QA</option>
+          </select>
           <input
             type="text"
             value={email}

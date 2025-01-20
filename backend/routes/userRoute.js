@@ -10,7 +10,7 @@ dotenv.config()
 const SECRET = process.env.JWT_SECRET;
 
 router.post('/signup', validator(schema.signupValidate), async(req, res) => {
-  const {name, email, password} = req.body;
+  const {name, role, email, password} = req.body;
   try {
     const existingUsers = await Users.findOne({where: {email} })
     if (existingUsers) return res.json({message: "user already registered"}) 
@@ -20,6 +20,7 @@ router.post('/signup', validator(schema.signupValidate), async(req, res) => {
 
     const user = await Users.create({
       name: name,
+      role: role,
       email: email,
       password: hashedPassword
     })
