@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import authReducer from "../features/auth/authSlice";
 import issueReducer from "../features/issues/issueSlice";
+import projectReducer from "../features/projects/projectSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 
@@ -14,6 +15,7 @@ const persistConfig = {
 const reducer = combineReducers({
   auth: authReducer,
   issues: issueReducer,
+  projects: projectReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
