@@ -23,12 +23,21 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       allowNull: false
     },
+    project_id: {
+      type: DataTypes.INTEGER, 
+      references: {
+        model: 'Projects', 
+        key: 'project_id'
+      },
+      allowNull: true
+    },
     user_id: {
       type : DataTypes.INTEGER,
       allowNull: false,
       references: {
         model : 'Users',
-        key: 'id'
+        key: 'id',
+        as: 'user_id'
       }
     },
     assignedTo: {
@@ -38,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Issue.associate = function(models) {
+    Issue.belongsTo(models.Project, {
+      foreignKey: 'project_id',
+      as: 'project' 
+    });
     Issue.belongsTo(models.Users,{
       foreignKey: 'user_id',
       onDelete: 'CASCADE'

@@ -2,6 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+
     await queryInterface.createTable('Issues', {
       issue_id: {
         allowNull: false,
@@ -18,31 +19,42 @@ module.exports = {
       issueType: {
         type: Sequelize.STRING
       },
-      assignedTo: {
-        type: Sequelize.STRING
-      },
-
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       user_id: { 
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Users', 
           key: 'id',
-          as: 'userId'
+          as: 'user_id'
         },
         onDelete: 'CASCADE',
+      },
+      project_id: {  
+        type: Sequelize.INTEGER,
+        allowNull: true,  
+        references: {
+          model: 'Projects', 
+          key: 'project_id',
+          as: 'project_id' 
+        },
+        onDelete: 'CASCADE', 
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      assignedTo: {
+        type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
     });
   },
+
   async down(queryInterface, Sequelize) {
+   
     await queryInterface.dropTable('Issues');
   }
 };
