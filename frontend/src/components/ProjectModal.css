@@ -1,0 +1,34 @@
+.team{
+  width: 90%;
+  padding: 15px;
+  margin: 10px 0px;
+  border: 1px solid gainsboro;
+}
+.projectForm{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 10px;
+  color: rgb(104, 104, 104);
+}
+
+.projectForm > p {
+  color: rgb(133, 133, 133); 
+  font-size: 12px;
+}
+.projectForm > input {
+  transition: all .7s;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 3px;
+  
+}
+
+
+.projectForm > input:focus{
+  border: 2px solid rgb(50, 174, 212);
+}

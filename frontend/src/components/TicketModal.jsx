@@ -139,8 +139,8 @@ function TicketModal({ setIsModalOpen }) {
             >
               <option value="">Select an Assignee</option>
               {registeredUsers.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
+                <option key={index} value={item.user}>
+                  {item.user}
                 </option>
               ))}
             </select>

@@ -1,0 +1,58 @@
+.table{ 
+  width: 100%;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  border: 1px solid rgb(187, 187, 187);
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #cfcfcf;
+}
+.createBtn{
+  background-color: rgb(0, 119, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}
+.modal2{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalContainer2{
+  position: fixed;
+  width: 500px;
+  height: 100px;
+  align-content: center;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px 30px;
+  
+}
+.title2{
+  text-align: center;
+}
+
+.title2 > p{
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  font-weight: 500;
+}
+.cross{
+  font-size: 20px;
+  cursor: pointer;
+  top: 15px;
+  position: absolute;
+  right: 20px;
+}

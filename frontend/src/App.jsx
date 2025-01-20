@@ -4,6 +4,7 @@ import "./App.css";
 import Authentication from "./pages/Authentication";
 import Layout from "./components/Layout";
 import Signup from "./components/Signup";
+import Projects from "./components/Projects";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
             {/* <Route path="login" element={<Login />}></Route> */}
             <Route path="signup" element={<Signup />}></Route>
             <Route path="home" element={<Home />}></Route>
+            <Route path="projects" element={<Projects />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

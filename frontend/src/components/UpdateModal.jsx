@@ -14,6 +14,7 @@ import {
   updateIssue,
 } from "../features/issues/issueSlice";
 import { reset } from "../features/auth/authSlice";
+import { resetprojects } from "../features/projects/projectSlice";
 
 function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);
@@ -35,6 +36,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
 
   // const handleDel = async (i) => {
   // dispatch(setIssues([]));
+  // dispatch(resetprojects([]));
   // dispatch(reset());
   // const toDeleteIssue = Issues[i];
   // const del_id = toDeleteIssue.issue_id;
@@ -45,7 +47,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   // } catch (error) {
   //   console.error("Error deleting order:", error);
   // }
-  // setUpdateModalOpen(false);
+  //   setUpdateModalOpen(false);
   // };
 
   const handleSave = async () => {
@@ -261,7 +263,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               <option value="select">Select an Assignee</option>
                               {registeredUsers.map((item, index) => (
                                 <option key={index} value={item}>
-                                  {item}
+                                  {item.user}
                                 </option>
                               ))}
                             </select>

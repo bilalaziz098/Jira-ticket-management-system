@@ -23,8 +23,12 @@ const projectSlice = createSlice({
         (project) => project.project_id !== project_id
       );
     },
+    resetprojects: (state, action) => {
+      state.projects = [];
+    },
   },
 });
 
-export const { addProjects, setError, deleteProject } = projectSlice.actions;
+export const { addProjects, setError, deleteProject, resetprojects } =
+  projectSlice.actions;
 export default projectSlice.reducer;

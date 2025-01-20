@@ -42,7 +42,7 @@ router.post('/', validator(schema.loginValidate), async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) return res.status(404).json({message: "Invalid credentials"})
       
-    return res.status(200).json({message: "user successfully logged in", user: {id : user.id, user : user.email, name: user.name}})
+    return res.status(200).json({message: "user successfully logged in", user: {id : user.id, user : user.email, name: user.name, role: user.role}})
 
   } catch (error) {
     console.log(error)

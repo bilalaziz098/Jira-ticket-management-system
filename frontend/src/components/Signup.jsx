@@ -41,9 +41,10 @@ function Signup() {
         email: email,
         password: pass,
       });
-      const user = response.data.user.name;
+      const { data } = response;
+      const { name: user, role: teamRole } = data.user;
 
-      dispatch(registerUser(user));
+      dispatch(registerUser({ user, teamRole }));
       navigate("/");
     } catch (err) {
       const error = err.response.data.message;

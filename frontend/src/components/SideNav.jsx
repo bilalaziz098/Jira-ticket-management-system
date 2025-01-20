@@ -17,6 +17,10 @@ function SideNav({ showSide }) {
     dispatch(logout());
     navigate("/");
   };
+
+  const openBoard = () => {
+    navigate("/home");
+  };
   return (
     <>
       <div className={showSide ? "sidenav active" : "sidenav"}>
@@ -26,7 +30,7 @@ function SideNav({ showSide }) {
               <GoProjectRoadmap className="icons2" />
               <a href="">Roadmap</a>
             </li>
-            <li>
+            <li onClick={openBoard}>
               <CiViewTable className="icons2" />
               <a href="">Board</a>
             </li>

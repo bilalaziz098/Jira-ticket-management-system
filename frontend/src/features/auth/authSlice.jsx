@@ -12,7 +12,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     loginSuccess: (state, action) => {
-      const data = action.payload;
       state.user = action.payload;
       state.isAuthenticated = true;
     },
@@ -26,9 +25,10 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
     },
     registerUser: (state, action) => {
-      const email = action.payload;
-      if (typeof email === "string") {
-        state.registeredUsers.push(email);
+      const data = action.payload;
+      if (typeof data === "object") {
+        state.registeredUsers.push(data);
+        console.log(state.registeredUsers);
       } else {
         console.log("invalid type", action.payload);
       }

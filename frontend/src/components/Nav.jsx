@@ -6,13 +6,19 @@ import { IoIosSettings } from "react-icons/io";
 import { TbBellRinging2Filled } from "react-icons/tb";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import SideNav from "./SideNav";
+import { useNavigate } from "react-router-dom";
 
 function Nav({ setShowSide, showSide }) {
+  const navigate = useNavigate();
   const [selectedLink, setSelectedLink] = useState(null);
   const handleLinkClick = (link) => {
     setSelectedLink(link);
   };
 
+  const handleProjectClick = (link) => {
+    setSelectedLink(link);
+    navigate("/projects");
+  };
   return (
     <>
       <nav className="loginNav">
@@ -25,7 +31,6 @@ function Nav({ setShowSide, showSide }) {
           <h3>Jira Software clone</h3>
           <li>
             <a
-              href="#"
               className={selectedLink === "yourwork" ? "active" : ""}
               onClick={() => handleLinkClick("yourwork")}
             >
@@ -34,9 +39,8 @@ function Nav({ setShowSide, showSide }) {
           </li>
           <li>
             <a
-              href="#"
               className={selectedLink === "projects" ? "active" : ""}
-              onClick={() => handleLinkClick("projects")}
+              onClick={() => handleProjectClick("projects")}
             >
               Projects
             </a>
@@ -77,7 +81,6 @@ function Nav({ setShowSide, showSide }) {
               Apps
             </a>
           </li>
-          <button>Create</button>
         </div>
         <div className="links">
           <CiSearch className="icons" />
