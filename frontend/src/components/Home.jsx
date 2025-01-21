@@ -4,6 +4,7 @@ import { FaBolt, FaRegStar, FaUserCircle } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import Nav from "./Nav";
 import TicketModal from "./TicketModal";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { closestCorners, DndContext } from "@dnd-kit/core";
 import UpdateModal from "./UpdateModal";
@@ -15,12 +16,15 @@ function Home() {
   const [updateTicket, setUpdateTicket] = useState(null);
   const [showSide, setShowSide] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModal2Open, setIsModal2Open] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    user.user.role === "Project Manager"
+      ? setIsModalOpen(true)
+      : setIsModal2Open(true);
   };
 
   const updateTicketModal = (issue, index) => {
@@ -97,6 +101,20 @@ function Home() {
             />
           </DndContext>
 
+          {isModal2Open && (
+            <div className="modal2">
+              <div className="modalContainer2">
+                <IoMdClose
+                  className="cross"
+                  onClick={() => setIsModal2Open(false)}
+                />
+
+                <div className="title2">
+                  <p>Sign in as Project Manager to create a ticket</p>
+                </div>
+              </div>
+            </div>
+          )}
           {isModalOpen && <TicketModal setIsModalOpen={setIsModalOpen} />}
           {updateModalOpen && (
             <UpdateModal

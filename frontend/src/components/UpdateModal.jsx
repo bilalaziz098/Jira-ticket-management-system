@@ -22,6 +22,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const [editDescription, setEditDescription] = useState(true);
   const Issues = useSelector((state) => state.issues.issues);
   const dispatch = useDispatch();
+  const [analyst, setAnalyst] = useState("");
   const [assigned, setAssigned] = useState(updateTicket.issue.assignedTo || "");
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const userIssue = Issues.filter((issue) => issue.user_id === user.user.id);
@@ -148,6 +149,8 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                   <button>Apps</button>
                 </div>
                 <div className="btns2 status">
+                  <p>Task Classification - {updateTicket.issue.taskType}</p>
+
                   <select
                     name="status"
                     value={status}
@@ -261,11 +264,13 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               onChange={(e) => setAssigned(e.target.value)}
                             >
                               <option value="select">Select an Assignee</option>
-                              {registeredUsers.map((item, index) => (
-                                <option key={index} value={item}>
-                                  {item.user}
-                                </option>
-                              ))}
+                              {registeredUsers.map((item, index) =>
+                                item.teamRole !== "QA" ? (
+                                  <option key={index} value={item}>
+                                    {item.user}
+                                  </option>
+                                ) : null
+                              )}
                             </select>
                           </td>
                         </tr>
@@ -287,9 +292,23 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                         <tr>
                           <td>QA Analyst:</td>
                           <td className="td">
-                            {" "}
-                            <FaUserCircle style={{ fontSize: "25px" }} />
-                            None
+                            <FaUserCircle style={{ fontSize: "30px" }} />
+                            {analyst === "" ? "Not Assigned" : analyst}
+                            <select
+                              className="hello"
+                              name="Assignee"
+                              value="select"
+                              onChange={(e) => setAnalyst(e.target.value)}
+                            >
+                              <option value="select">Select an Analyst</option>
+                              {registeredUsers.map((item, index) =>
+                                item.teamRole === "QA" ? (
+                                  <option key={index} value={item}>
+                                    {item.user}
+                                  </option>
+                                ) : null
+                              )}
+                            </select>
                           </td>
                         </tr>
                         <tr>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ProjectModal.css";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addProjects } from "../features/projects/projectSlice";
@@ -15,6 +16,10 @@ function ProjectModal({ setIsModalOpen }) {
     if (selectedMember && !projectTeam.includes(selectedMember)) {
       setProjectTeam([...projectTeam, selectedMember]);
     }
+  };
+
+  const handleDel = (index) => {
+    setProjectTeam(projectTeam.filter((_, i) => i !== index));
   };
 
   const projectData = {
@@ -70,6 +75,10 @@ function ProjectModal({ setIsModalOpen }) {
                 projectTeam.map((member, index) => (
                   <div key={index} className="selectedMember">
                     {member}
+                    <IoMdClose
+                      style={{ fontSize: "20px", cursor: "pointer" }}
+                      onClick={() => handleDel(index)}
+                    />
                   </div>
                 ))}
             </div>

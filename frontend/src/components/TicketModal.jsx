@@ -16,6 +16,7 @@ function TicketModal({ setIsModalOpen }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [issue, setIssue] = useState("");
+  const [taskType, setTaskType] = useState("");
   const [description, setDescription] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
   const [status, setStatus] = useState("");
@@ -28,7 +29,6 @@ function TicketModal({ setIsModalOpen }) {
       issueType: issue,
       user_id: user.user.id,
       assignedTo,
-      status,
     };
 
     try {
@@ -38,7 +38,7 @@ function TicketModal({ setIsModalOpen }) {
       );
       const data = response.data.issue;
 
-      const data1 = { ...data, status };
+      const data1 = { ...data, status, taskType };
       dispatch(addIssues(data1));
     } catch (error) {
       console.log("err", error);
@@ -79,6 +79,18 @@ function TicketModal({ setIsModalOpen }) {
               <option value="Project 3">Project 3</option>
             </select>
 
+            <label className=" label type">Task Type Selection</label>
+            <select
+              name="issue"
+              value={taskType}
+              onChange={(e) => setTaskType(e.target.value)}
+            >
+              <option>Select Task Type</option>
+              <option>Frontend</option>
+              <option>Backend</option>
+              <option>UI</option>
+            </select>
+
             <label className="label issue">Issue Type</label>
             <select
               name="issue"
@@ -95,7 +107,7 @@ function TicketModal({ setIsModalOpen }) {
               Some issue types are unavailable due to incompatible field
               configuration and/or workflow associations
             </p>
-            <label className="status">Status</label>
+            <label className="label status">Status</label>
             <select
               name="status"
               value={status}
