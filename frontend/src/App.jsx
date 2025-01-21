@@ -14,7 +14,7 @@ function App() {
             <Route index element={<Authentication />}></Route>
             {/* <Route path="login" element={<Login />}></Route> */}
             <Route path="signup" element={<Signup />}></Route>
-            <Route path="home" element={<Home />}></Route>
+            <Route path="home/:projectId" element={<Home />}></Route>
             <Route path="projects" element={<Projects />}></Route>
           </Route>
         </Routes>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { FaBolt, FaRegStar, FaUserCircle } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -6,19 +6,24 @@ import Nav from "./Nav";
 import TicketModal from "./TicketModal";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { closestCorners, DndContext } from "@dnd-kit/core";
+import { DndContext } from "@dnd-kit/core";
 import UpdateModal from "./UpdateModal";
 import Tasks from "./Tasks";
 import { updateIssueStatus } from "../features/issues/issueSlice";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Home() {
   const { issues } = useSelector((state) => state.issues);
+  const { projects } = useSelector((state) => state.projects);
   const [updateTicket, setUpdateTicket] = useState(null);
   const [showSide, setShowSide] = useState(true);
+  const [projectName, setProjectName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
+  const { projectId } = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const handleOpenModal = () => {
@@ -35,25 +40,6 @@ function Home() {
   const statuses = ["TO DO", "IN PROGRESS", "DONE"];
 
   const issuePos = (id) => issues.findIndex((task) => task.issue_id === id);
-  // console.log(issues.status, "sad");
-
-  // const handleDragEnd = (event) => {
-  //   const { active, over } = event;
-  //   console.log("Active id is: ", active.id, "over id is ", over.id);
-
-  //   if (active.id === over.id) return console.log("hello");
-  //   // console.log(issues.status);
-
-  //   setTasks((tasks) => {
-  //     const originalPos = issuePos(active.id);
-  //     const newPos = issuePos(over.id);
-  //     const updatedIssue = {
-  //       status: tasks.status,
-  //     };
-  //     dispatch(updateIssue({ toUpdatedIssue: [updatedIssue] }));
-  //     return arrayMove(tasks, originalPos, newPos);
-  //   });
-  // };
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
@@ -75,13 +61,28 @@ function Home() {
     );
   };
 
+  useEffect(() => {
+    projects.find((item) =>
+      item.project_id === Number(projectId)
+        ? setProjectName(item.project_name)
+        : null
+    );
+  }, []);
+
+  const navigateProjects = () => {
+    navigate("/projects");
+  };
+
   return (
     <>
       <Nav setShowSide={setShowSide} showSide={showSide} />
       <div className="container">
         <div className={`content ${showSide ? "shift-left" : ""}`}>
           <div className="project-head">
-            <h3>Project Name</h3>
+            <div className="projectTitle">
+              <h3>{projectName}</h3>
+              <p onClick={navigateProjects}>Select other Project</p>
+            </div>
             <div>
               <FaBolt className="icons" />
               <FaRegStar className="icons" />

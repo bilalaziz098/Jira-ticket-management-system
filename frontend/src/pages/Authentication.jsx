@@ -8,7 +8,7 @@ function Authentication() {
   const { isAuthenticated } = useSelector((state) => state.auth);
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/home");
+      navigate("/projects");
     }
   }, [isAuthenticated, navigate]);
 

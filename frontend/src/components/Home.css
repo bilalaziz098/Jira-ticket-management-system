@@ -70,6 +70,26 @@ li ,a {
   gap: 15px;
 }
 
+.projectTitle {
+  display: flex;
+  align-items: center;
+}
+
+.projectTitle > h3 {
+  margin: 16px 0px;
+}
+
+.projectTitle > p{
+  background-color: rgb(215, 230, 250);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.projectTitle > p:hover{
+  background-color: rgb(183, 213, 253);
+}
+
 .usericon{
   color: rgb(31, 46, 68);
   font-size: 30px;

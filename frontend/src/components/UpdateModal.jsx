@@ -266,9 +266,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               <option value="select">Select an Assignee</option>
                               {registeredUsers.map((item, index) =>
                                 item.teamRole !== "QA" ? (
-                                  <option key={index} value={item}>
-                                    {item.user}
-                                  </option>
+                                  <option key={index}>{item.user}</option>
                                 ) : null
                               )}
                             </select>
@@ -303,9 +301,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               <option value="select">Select an Analyst</option>
                               {registeredUsers.map((item, index) =>
                                 item.teamRole === "QA" ? (
-                                  <option key={index} value={item}>
-                                    {item.user}
-                                  </option>
+                                  <option key={index}>{item.user}</option>
                                 ) : null
                               )}
                             </select>

@@ -3,9 +3,13 @@ import { useSelector } from "react-redux";
 import { IoMdAdd } from "react-icons/io";
 import { useDroppable } from "@dnd-kit/core";
 import Task from "./Task";
+import { useParams } from "react-router-dom";
 
 function Tasks({ statuses, updateTicketModal, handleOpenModal }) {
   const { issues } = useSelector((state) => state.issues);
+
+  const { projectId } = useParams();
+
   return (
     <>
       <div className="tickets">
@@ -31,7 +35,10 @@ function Tasks({ statuses, updateTicketModal, handleOpenModal }) {
               </h3>
 
               {issues
-                .filter((item) => item.status === status)
+                .filter(
+                  (item) =>
+                    item.status === status && item.project_id === projectId
+                )
                 .map((item, index) => (
                   <Task
                     key={item.issue_id}

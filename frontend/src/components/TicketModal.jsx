@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./TicketModal.css";
 import ReactQuill from "react-quill";
-
 import "react-quill/dist/quill.snow.css";
-
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addIssues } from "../features/issues/issueSlice";
@@ -20,6 +19,8 @@ function TicketModal({ setIsModalOpen }) {
   const [description, setDescription] = useState("");
   const [assignedTo, setAssignedTo] = useState("");
   const [status, setStatus] = useState("");
+  const { projectId } = useParams();
+
   const submitForm = async (event) => {
     event.preventDefault();
 
@@ -27,6 +28,7 @@ function TicketModal({ setIsModalOpen }) {
       title,
       description: description,
       issueType: issue,
+      project_id: projectId,
       user_id: user.user.id,
       assignedTo,
     };

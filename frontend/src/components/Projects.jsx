@@ -4,8 +4,10 @@ import "./Projects.css";
 import ProjectModal from "./ProjectModal";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Projects() {
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { projects } = useSelector((state) => state.projects);
   const [showSide, setShowSide] = useState(true);
@@ -14,6 +16,10 @@ function Projects() {
   const createProject = () => {
     user.user.role === "Admin" ? setIsModalOpen(true) : setIsModal2Open(true);
     // setIsModalOpen(true);
+  };
+
+  const handleProjectTickets = (projectId) => {
+    navigate(`/home/${projectId}`);
   };
 
   return (
@@ -45,6 +51,14 @@ function Projects() {
                       {project.projectTeam.map((team, index) => (
                         <p key={index}>{team}</p>
                       ))}
+                    </td>
+                    <td>
+                      <button
+                        className="viewTicketsBtn"
+                        onClick={() => handleProjectTickets(project.project_id)}
+                      >
+                        View Tickets
+                      </button>
                     </td>
                   </tr>
                 ))}
