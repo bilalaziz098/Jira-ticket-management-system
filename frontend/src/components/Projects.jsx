@@ -5,14 +5,18 @@ import ProjectModal from "./ProjectModal";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import UpdateProject from "./UpdateProject";
 
 function Projects() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { projects } = useSelector((state) => state.projects);
   const [showSide, setShowSide] = useState(true);
+  const [updateProjectId, setUpdateProjectId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);
+  const [isModal3Open, setIsModal3Open] = useState(false);
+
   const createProject = () => {
     user.user.role === "Admin" ? setIsModalOpen(true) : setIsModal2Open(true);
     // setIsModalOpen(true);
@@ -20,6 +24,10 @@ function Projects() {
 
   const handleProjectTickets = (projectId) => {
     navigate(`/home/${projectId}`);
+  };
+  const handleProjectUpdate = (projectId) => {
+    user.user.role === "Admin" ? setIsModal3Open(true) : setIsModal2Open(true);
+    setUpdateProjectId(projectId);
   };
 
   return (
@@ -54,6 +62,12 @@ function Projects() {
                     </td>
                     <td>
                       <button
+                        className="projectUpdateBtn"
+                        onClick={() => handleProjectUpdate(project.project_id)}
+                      >
+                        Update Project
+                      </button>
+                      <button
                         className="viewTicketsBtn"
                         onClick={() => handleProjectTickets(project.project_id)}
                       >
@@ -75,12 +89,18 @@ function Projects() {
                 />
 
                 <div className="title2">
-                  <p>Sign in as Admin to create a project</p>
+                  <p>Sign in as Admin to perform this action</p>
                 </div>
               </div>
             </div>
           )}
           {isModalOpen && <ProjectModal setIsModalOpen={setIsModalOpen} />}
+          {isModal3Open && (
+            <UpdateProject
+              setIsModalOpen={setIsModal3Open}
+              updateProjectId={updateProjectId}
+            />
+          )}
         </div>
       </div>
     </>

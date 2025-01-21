@@ -17,6 +17,16 @@ const projectSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
+    updateProject: (state, action) => {
+      const { toUpdatedProject } = action.payload;
+      console.log(toUpdatedProject);
+      state.projects = state.projects.map((project) =>
+        project.project_id === toUpdatedProject[0].project_id
+          ? { ...project, ...toUpdatedProject[0] }
+          : project
+      );
+      console.log(state.projects);
+    },
     deleteProject: (state, action) => {
       const { project_id } = action.payload;
       state.projects = state.projects.filter(
@@ -29,6 +39,11 @@ const projectSlice = createSlice({
   },
 });
 
-export const { addProjects, setError, deleteProject, resetprojects } =
-  projectSlice.actions;
+export const {
+  addProjects,
+  setError,
+  deleteProject,
+  resetprojects,
+  updateProject,
+} = projectSlice.actions;
 export default projectSlice.reducer;

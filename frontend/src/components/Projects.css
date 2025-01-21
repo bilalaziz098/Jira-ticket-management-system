@@ -56,3 +56,46 @@ tr:nth-child(even) {
   position: absolute;
   right: 20px;
 }
+.viewTicketsBtn {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: rgb(221, 240, 255);
+  border: 1px solid rgb(91, 108, 129);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.projectUpdateBtn {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: rgb(196, 203, 204);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal3{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modalContainer3{
+  position: fixed;
+  width: 600px;
+  align-content: center;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 40px 30px;
+  
+}
+.selectedMembers{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px;
+}
