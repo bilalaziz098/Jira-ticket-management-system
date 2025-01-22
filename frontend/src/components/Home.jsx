@@ -49,16 +49,55 @@ function Home() {
     const draggedTask = issues.find((task) => task.issue_id === active.id);
     if (!draggedTask) return;
 
-    const newStatus = over.id;
+    const { role } = user.user;
+    console.log("user is", role);
+    console.log("task is", draggedTask.status);
 
-    console.log(draggedTask, active.id, newStatus);
-
-    dispatch(
-      updateIssueStatus({
-        id: draggedTask.issue_id,
-        status: newStatus,
-      })
-    );
+    if (role === "QA") {
+      if (draggedTask.status === "DONE" && over.id === "IN PROGRESS") {
+        dispatch(
+          updateIssueStatus({
+            id: draggedTask.issue_id,
+            status: "IN PROGRESS",
+          })
+        );
+      } else {
+        alert("not allowed");
+      }
+    } else if (role === "Developer") {
+      if (
+        (draggedTask.status === "TODO" ||
+          draggedTask.status === "IN PROGRESS") &&
+        (over.id === "IN PROGRESS" || over.id === "DONE")
+      ) {
+        const newStatus = over.id;
+        dispatch(
+          updateIssueStatus({
+            id: draggedTask.issue_id,
+            status: newStatus,
+          })
+        );
+      } else if (draggedTask.status === "IN PROGRESS" && over.id === "DONE") {
+        const newStatus = over.id;
+        dispatch(
+          updateIssueStatus({
+            id: draggedTask.issue_id,
+            status: newStatus,
+          })
+        );
+      } else {
+        alert("not allowed");
+        console.log(over.id);
+      }
+    } else {
+      const newStatus = over.id;
+      dispatch(
+        updateIssueStatus({
+          id: draggedTask.issue_id,
+          status: newStatus,
+        })
+      );
+    }
   };
 
   useEffect(() => {
