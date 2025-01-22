@@ -66,7 +66,7 @@ function Home() {
       }
     } else if (role === "Developer") {
       if (
-        (draggedTask.status === "TODO" ||
+        (draggedTask.status === "TO DO" ||
           draggedTask.status === "IN PROGRESS") &&
         (over.id === "IN PROGRESS" || over.id === "DONE")
       ) {
