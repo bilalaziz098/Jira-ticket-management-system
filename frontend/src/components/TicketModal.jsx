@@ -74,13 +74,6 @@ function TicketModal({ setIsModalOpen }) {
             </div>
           </div>
           <form className="ticketForm" action="" onSubmit={submitForm}>
-            <label className="label project">Project</label>
-            <select name="type">
-              <option value="Project 1">Project 1</option>
-              <option value="Project 2">Project 2</option>
-              <option value="Project 3">Project 3</option>
-            </select>
-
             <label className=" label type">Task Type Selection</label>
             <select
               name="issue"

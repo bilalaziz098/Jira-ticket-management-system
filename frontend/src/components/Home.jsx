@@ -62,7 +62,7 @@ function Home() {
           })
         );
       } else {
-        alert("not allowed");
+        console.log("not allowed");
       }
     } else if (role === "Developer") {
       if (
@@ -86,7 +86,6 @@ function Home() {
           })
         );
       } else {
-        alert("not allowed");
         console.log(over.id);
       }
     } else {
