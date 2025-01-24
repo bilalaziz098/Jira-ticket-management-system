@@ -89,7 +89,7 @@ function TicketModal({ setIsModalOpen }) {
               <option>Select Task Type</option>
               <option>Frontend</option>
               <option>Backend</option>
-              <option>UI</option>
+              <option>Database</option>
             </select>
 
             <label className="label issue">Issue Type</label>

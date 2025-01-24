@@ -26,8 +26,6 @@ function Projects() {
     project.projectTeam.includes(`${user.user.name} - ${user.user.role}`)
   );
 
-  console.log(userProjects);
-
   const handleProjectTickets = (projectId) => {
     navigate(`/home/${projectId}`);
   };

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UpdateModal.css";
 import { IoMdClose } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import { IoIosArrowUp } from "react-icons/io";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -17,12 +18,14 @@ import { reset } from "../features/auth/authSlice";
 import { resetprojects } from "../features/projects/projectSlice";
 
 function UpdateModal({ setUpdateModalOpen, updateTicket }) {
+  const { projectId } = useParams();
+  const { projects } = useSelector((state) => state.projects);
   const { user, registeredUsers } = useSelector((state) => state.auth);
   const [editTitle, setEditTitle] = useState(true);
   const [editDescription, setEditDescription] = useState(true);
   const Issues = useSelector((state) => state.issues.issues);
   const dispatch = useDispatch();
-  const [analyst, setAnalyst] = useState("");
+  const [analyst, setAnalyst] = useState(updateTicket.issue.analyst || "");
   const [assigned, setAssigned] = useState(updateTicket.issue.assignedTo || "");
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const userIssue = Issues.filter((issue) => issue.user_id === user.user.id);
@@ -34,6 +37,9 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const openDetails = () => {
     setIsDetailsOpen((prev) => !prev);
   };
+  const selectedProject = projects.find(
+    (project) => project.project_id === Number(projectId)
+  );
 
   // const handleDel = async (i) => {
   // dispatch(setIssues([]));
@@ -56,6 +62,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
     const updatedIssue = {
       ...data,
       assignedTo: assigned,
+      analyst,
       user_id: user.user.id,
       title: title,
       description: desc,
@@ -73,24 +80,37 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
         dispatch(
           updateIssue({ toUpdatedIssue: [updatedIssue], user_id: user.user.id })
         );
-        setUpdateModalOpen(false);
       }
     } catch (error) {
       console.error("Error updating issue:", error);
     }
-
-    dispatch(updateIssue({ toUpdatedIssue: [updatedIssue] }));
   };
 
-  const assignMyself = () => {
-    const me = user.user.name;
-    setAssigned(me);
+  useEffect(() => {
+    if (assigned !== updateTicket.issue.assignedTo) {
+      handleSave();
+    }
+  }, [assigned]);
+  useEffect(() => {
+    if (analyst !== updateTicket.issue.analyst) {
+      handleSave();
+    }
+  }, [analyst]);
+
+  const editAnalyst = (e) => {
+    setAnalyst(e.target.value);
+  };
+
+  const editAssignee = (e) => {
+    setAssigned(e.target.value);
   };
 
   const updateTitle = () => {
+    handleSave();
     setEditTitle((prev) => !prev);
   };
   const updateDescription = () => {
+    handleSave();
     setEditDescription((prev) => !prev);
   };
 
@@ -110,7 +130,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
 
               <IoMdClose
                 style={{ fontSize: "20px", cursor: "pointer" }}
-                onClick={handleSave}
+                onClick={() => setUpdateModalOpen(false)}
               />
             </div>
           </div>
@@ -258,12 +278,15 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               className="hello"
                               name="Assignee"
                               value="select"
-                              onChange={(e) => setAssigned(e.target.value)}
+                              onChange={(e) => editAssignee(e)}
                             >
                               <option value="select">Select an Assignee</option>
-                              {registeredUsers.map((item, index) =>
+
+                              {selectedProject.projectTeam.map((item, index) =>
                                 item.teamRole !== "QA" ? (
-                                  <option key={index}>{item.user}</option>
+                                  <option key={index} value={item}>
+                                    {item}
+                                  </option>
                                 ) : null
                               )}
                             </select>
@@ -293,7 +316,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                               className="hello"
                               name="Assignee"
                               value="select"
-                              onChange={(e) => setAnalyst(e.target.value)}
+                              onChange={(e) => editAnalyst(e)}
                             >
                               <option value="select">Select an Analyst</option>
                               {registeredUsers.map((item, index) =>

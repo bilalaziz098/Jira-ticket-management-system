@@ -18,7 +18,6 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
   const [projectName, setProjectName] = useState(projectData.project_name);
   const [projectTeam, setProjectTeam] = useState(projectData.projectTeam);
 
-  console.log(projectData.projectTeam);
   const addmembers = (e) => {
     const selectedMember = e.target.value;
     if (selectedMember && !projectTeam.includes(selectedMember)) {
@@ -44,7 +43,6 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
     } catch (error) {
       console.error("Error updating issue:", error);
     }
-    setIsModalOpen(false);
 
     // dispatch(updateProject({ toUpdatedProject: [updatedProject] }));
   };
@@ -54,9 +52,11 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
   };
 
   const updateProjectName = () => {
+    handleSave();
     setEditProjectName((prev) => !prev);
   };
   const updateTeamMembers = () => {
+    handleSave();
     setEditTeamMembers((prev) => !prev);
   };
 
@@ -64,7 +64,7 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
     <>
       <div className="modal3">
         <div className="modalContainer3">
-          <IoMdClose className="cross" onClick={handleSave} />
+          <IoMdClose className="cross" onClick={() => setIsModalOpen(false)} />
           <div>
             <div
               className="titleDivs"
@@ -77,6 +77,9 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
             >
               {editProjectName ? (
                 <>
+                  <p style={{ margin: "0px", color: "teal", fontSize: "20px" }}>
+                    Project Name -{" "}
+                  </p>
                   <h3>{projectName}</h3>
                   <button onClick={updateProjectName} className="editBtn">
                     Edit
@@ -84,6 +87,9 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
                 </>
               ) : (
                 <>
+                  <p style={{ margin: "0px", color: "teal", fontSize: "20px" }}>
+                    Project Name -{" "}
+                  </p>
                   <input
                     className="editTitle"
                     type="text"
@@ -96,23 +102,52 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
                 </>
               )}
             </div>
+            <div
+              style={{
+                border: "1px solid lightgrey",
+                width: "50%",
+                margin: "15px auto",
+              }}
+            ></div>
           </div>
           {editTeamMembers ? (
             <>
-              <h3>{projectTeam}</h3>
-              <button onClick={updateTeamMembers} className="editBtn">
+              <p style={{ margin: "0px", color: "teal", fontSize: "20px" }}>
+                Project Team
+              </p>
+              {projectTeam.map((team, i) => (
+                <h3 key={i} style={{ margin: "5px 0px" }}>
+                  {team}
+                </h3>
+              ))}
+              <button
+                onClick={updateTeamMembers}
+                style={{ marginTop: "10px" }}
+                className="editBtn"
+              >
                 Edit
               </button>
             </>
           ) : (
             <>
-              <select name="issue" onChange={(e) => addmembers(e)}>
+              <p style={{ margin: "0px", color: "teal", fontSize: "20px" }}>
+                Project Team
+              </p>
+              <select
+                style={{ marginTop: "5px" }}
+                name="issue"
+                onChange={(e) => addmembers(e)}
+              >
                 <option>Select Team</option>
-                {registeredUsers.map((user, index) => (
-                  <option key={index}>
-                    {user.user} - {user.teamRole}
-                  </option>
-                ))}
+                {registeredUsers.map((user, index) =>
+                  projectTeam.includes(
+                    `${user.user} - ${user.teamRole}`
+                  ) ? null : (
+                    <option key={index}>
+                      {user.user} - {user.teamRole}
+                    </option>
+                  )
+                )}
               </select>
               <div className="">
                 {projectTeam.length > 0 &&

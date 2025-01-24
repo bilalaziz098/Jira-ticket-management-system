@@ -65,11 +65,15 @@ function ProjectModal({ setIsModalOpen }) {
               onChange={(e) => addmembers(e)}
             >
               <option>Select Team</option>
-              {registeredUsers.map((user, index) => (
-                <option key={index}>
-                  {user.user} - {user.teamRole}
-                </option>
-              ))}
+              {registeredUsers.map((user, index) =>
+                projectTeam.includes(
+                  `${user.user} - ${user.teamRole}`
+                ) ? null : (
+                  <option key={index}>
+                    {user.user} - {user.teamRole}
+                  </option>
+                )
+              )}
             </select>
 
             <div className="team">
