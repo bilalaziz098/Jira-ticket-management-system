@@ -22,6 +22,12 @@ function Projects() {
     // setIsModalOpen(true);
   };
 
+  const userProjects = projects.filter((project) =>
+    project.projectTeam.includes(`${user.user.name} - ${user.user.role}`)
+  );
+
+  console.log(userProjects);
+
   const handleProjectTickets = (projectId) => {
     navigate(`/home/${projectId}`);
   };
@@ -53,7 +59,7 @@ function Projects() {
                 </tr>
               </thead>
               <tbody>
-                {projects.map((project, index) => (
+                {userProjects.map((project, index) => (
                   <tr key={index}>
                     <td>{project.project_id}</td>
                     <td>{project.project_name}</td>

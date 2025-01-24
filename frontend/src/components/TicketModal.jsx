@@ -11,6 +11,7 @@ import { reset } from "../features/auth/authSlice";
 function TicketModal({ setIsModalOpen }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);
   // console.log("Ssasd", user.user.id);
+  const { projects } = useSelector((state) => state.projects);
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
@@ -20,6 +21,11 @@ function TicketModal({ setIsModalOpen }) {
   const [assignedTo, setAssignedTo] = useState("");
   const [status, setStatus] = useState("");
   const { projectId } = useParams();
+
+  const selectedProject = projects.find(
+    (project) => project.project_id === Number(projectId)
+  );
+  console.log(selectedProject);
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -58,7 +64,7 @@ function TicketModal({ setIsModalOpen }) {
   //   setAssignedTo(user.email);
   // };
   const assignMyself = () => {
-    const me = user.user.name;
+    const me = `${user.user.name} - ${user.user.role}`;
     setAssignedTo(me);
   };
 
@@ -145,9 +151,9 @@ function TicketModal({ setIsModalOpen }) {
               onChange={(e) => setAssignedTo(e.target.value)}
             >
               <option value="">Select an Assignee</option>
-              {registeredUsers.map((item, index) => (
-                <option key={index} value={item.user}>
-                  {item.user}
+              {selectedProject.projectTeam.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
                 </option>
               ))}
             </select>

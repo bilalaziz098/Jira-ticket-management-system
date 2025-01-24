@@ -9,7 +9,9 @@ function ProjectModal({ setIsModalOpen }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [projectName, setProjectName] = useState("");
-  const [projectTeam, setProjectTeam] = useState([]);
+  const [projectTeam, setProjectTeam] = useState([
+    `${user.user.name} - ${user.user.role}`,
+  ]);
 
   const addmembers = (e) => {
     const selectedMember = e.target.value;
@@ -75,10 +77,12 @@ function ProjectModal({ setIsModalOpen }) {
                 projectTeam.map((member, index) => (
                   <div key={index} className="selectedMember">
                     {member}
-                    <IoMdClose
-                      style={{ fontSize: "20px", cursor: "pointer" }}
-                      onClick={() => handleDel(index)}
-                    />
+                    {member !== `${user.user.name} - ${user.user.role}` ? (
+                      <IoMdClose
+                        style={{ fontSize: "20px", cursor: "pointer" }}
+                        onClick={() => handleDel(index)}
+                      />
+                    ) : null}
                   </div>
                 ))}
             </div>
