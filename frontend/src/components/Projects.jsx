@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import "./Projects.css";
 import ProjectModal from "./ProjectModal";
@@ -37,9 +37,11 @@ function Projects() {
         <div className={`content ${showSide ? "shift-left" : ""}`}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <h3>Projects</h3>
-            <button className="createBtn" onClick={createProject}>
-              Create
-            </button>
+            {user.user.role === "Admin" ? (
+              <button className="createBtn" onClick={createProject}>
+                Create
+              </button>
+            ) : null}
           </div>
           <div>
             <table className="table">
@@ -61,12 +63,17 @@ function Projects() {
                       ))}
                     </td>
                     <td>
-                      <button
-                        className="projectUpdateBtn"
-                        onClick={() => handleProjectUpdate(project.project_id)}
-                      >
-                        Update Project
-                      </button>
+                      {user.user.role === "Admin" ? (
+                        <button
+                          className="projectUpdateBtn"
+                          onClick={() =>
+                            handleProjectUpdate(project.project_id)
+                          }
+                        >
+                          Update Project
+                        </button>
+                      ) : null}
+
                       <button
                         className="viewTicketsBtn"
                         onClick={() => handleProjectTickets(project.project_id)}

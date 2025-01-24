@@ -156,9 +156,6 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                   >
-                    <option>
-                      <button>Change Status</button>
-                    </option>
                     <option value="TO DO">TO DO</option>
                     <option value="IN PROGRESS">IN PROGRESS</option>
                     <option value="DONE">DONE</option>

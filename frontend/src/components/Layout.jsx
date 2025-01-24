@@ -6,7 +6,7 @@ const Layout = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   return (
     <>
-      {!isAuthenticated ? <Link to="/"></Link> : <Link to="/home"></Link>}
+      {!isAuthenticated ? <Link to="/"></Link> : <Link to="/projects"></Link>}
 
       <Outlet />
     </>
