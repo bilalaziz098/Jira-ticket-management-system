@@ -77,6 +77,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
       );
 
       if (response.status === 200) {
+        console.log(updateIssue);
         dispatch(
           updateIssue({ toUpdatedIssue: [updatedIssue], user_id: user.user.id })
         );
@@ -96,6 +97,11 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
       handleSave();
     }
   }, [analyst]);
+  useEffect(() => {
+    if (status !== updateTicket.issue.status) {
+      handleSave();
+    }
+  }, [status]);
 
   const editAnalyst = (e) => {
     setAnalyst(e.target.value);
@@ -112,6 +118,9 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const updateDescription = () => {
     handleSave();
     setEditDescription((prev) => !prev);
+  };
+  const updateStatus = (e) => {
+    setStatus(e.target.value);
   };
 
   return (
@@ -171,7 +180,7 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                 <div className="btns2 status">
                   <p>Task Classification - {updateTicket.issue.taskType}</p>
 
-                  <select
+                  {/* <select
                     name="status"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
@@ -179,7 +188,49 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                     <option value="TO DO">TO DO</option>
                     <option value="IN PROGRESS">IN PROGRESS</option>
                     <option value="DONE">DONE</option>
-                  </select>
+                  </select> */}
+
+                  {user.user.role !== "QA" && user.user.role !== "Developer" ? (
+                    <select
+                      name="status"
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="TO DO">TO DO</option>
+                      <option value="IN PROGRESS">IN PROGRESS</option>
+                      <option value="DONE">DONE</option>
+                    </select>
+                  ) : null}
+
+                  {status === "DONE" && user.user.role === "QA" ? (
+                    <select
+                      name="status"
+                      value={status}
+                      onChange={updateStatus}
+                    >
+                      {" "}
+                      {console.log("helo", status)}{" "}
+                      <option value="Change">Change Status</option>
+                      <option value="IN PROGRESS">IN PROGRESS</option>
+                    </select>
+                  ) : null}
+                  {(status === "TO DO" || status === "IN PROGRESS") &&
+                  user.user.role === "Developer" ? (
+                    <select
+                      name="status"
+                      value={status}
+                      onChange={updateStatus}
+                    >
+                      {" "}
+                      {console.log("helo", status)}{" "}
+                      <option value="Change">Change Status</option>
+                      {status === "TO DO" ? (
+                        <option value="IN PROGRESS">IN PROGRESS</option>
+                      ) : (
+                        <option value="DONE">DONE</option>
+                      )}
+                    </select>
+                  ) : null}
                 </div>
               </div>
               <hr />
