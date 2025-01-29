@@ -3,13 +3,13 @@ import "./Home.css";
 import { FaBolt, FaRegStar, FaUserCircle } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import Nav from "./Nav";
-import TicketModal from "./TicketModal";
+import TicketModal from "./ticketsUI/TicketModal";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { DndContext } from "@dnd-kit/core";
-import UpdateModal from "./UpdateModal";
-import Tasks from "./Tasks";
-import { updateIssueStatus } from "../features/issues/issueSlice";
+import UpdateModal from "./ticketsUI/UpdateModal";
+import Tasks from "./ticketsUI/Tasks";
+import { updateIssueStatus } from "../store/features/issues/issueSlice";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Home() {

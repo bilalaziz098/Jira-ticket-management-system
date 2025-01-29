@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Nav from "./Nav";
+import Nav from "../Nav";
 import "./Projects.css";
 import ProjectModal from "./ProjectModal";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import UpdateProject from "./UpdateProject";
+import UpdateProject from "../ticketsUI/UpdateProject";
 
 function Projects() {
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
+  const { user, registeredUsers } = useSelector((state) => state.auth);
   const { projects } = useSelector((state) => state.projects);
   const [showSide, setShowSide] = useState(true);
   const [updateProjectId, setUpdateProjectId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);
   const [isModal3Open, setIsModal3Open] = useState(false);
+  console.log(projects);
+  console.log(registeredUsers);
 
   const createProject = () => {
     user.user.role === "Admin" ? setIsModalOpen(true) : setIsModal2Open(true);

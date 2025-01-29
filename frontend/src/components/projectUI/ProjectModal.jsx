@@ -3,7 +3,7 @@ import "./ProjectModal.css";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { addProjects } from "../features/projects/projectSlice";
+import { addProjects } from "../../store/features/projects/projectSlice";
 
 function ProjectModal({ setIsModalOpen }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);

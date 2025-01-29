@@ -6,7 +6,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { AiFillFileAdd } from "react-icons/ai";
 import { IoIosSettings, IoIosLogOut } from "react-icons/io";
 import "./SideNav.css";
-import { logout } from "../features/auth/authSlice";
+import { logout } from "../store/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

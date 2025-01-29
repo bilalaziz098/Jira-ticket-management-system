@@ -14,7 +14,7 @@ projectRouter.post('/projects', async(req, res) => {
       project_name
     })
 
-    return res.json({message: 'Project created', project})
+    return res.status(201).json({message: 'Project created', project})
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: 'Server error' });
@@ -32,7 +32,7 @@ projectRouter.patch('/projects/:id', async (req, res) => {
       return res.status(404).json({ message: 'Project not found' });
     }
   
-    project.project_name = project_name || issue.project_name; 
+    project.project_name = project_name; 
   
     await project.save();
 

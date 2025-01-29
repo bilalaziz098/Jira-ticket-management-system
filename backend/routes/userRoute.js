@@ -13,7 +13,7 @@ router.post('/signup', validator(schema.signupValidate), async(req, res) => {
   const {name, role, email, password} = req.body;
   try {
     const existingUsers = await Users.findOne({where: {email} })
-    if (existingUsers) return res.json({message: "user already registered"}) 
+    if (existingUsers) return res.status(409).json({message: "user already registered"}) 
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt)
@@ -25,7 +25,7 @@ router.post('/signup', validator(schema.signupValidate), async(req, res) => {
       password: hashedPassword
     })
 
-    return res.json({message: 'user created', user})
+    return res.status(201).json({message: 'user created', user})
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: 'Server error' });

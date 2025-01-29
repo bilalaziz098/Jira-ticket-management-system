@@ -5,8 +5,8 @@ import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { addIssues } from "../features/issues/issueSlice";
-import { reset } from "../features/auth/authSlice";
+import { addIssues } from "../../store/features/issues/issueSlice";
+import { reset } from "../../store/features/auth/authSlice";
 
 function TicketModal({ setIsModalOpen }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);

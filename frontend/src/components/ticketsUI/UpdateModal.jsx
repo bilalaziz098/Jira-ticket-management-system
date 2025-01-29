@@ -13,9 +13,9 @@ import {
   deleteIssue,
   setIssues,
   updateIssue,
-} from "../features/issues/issueSlice";
-import { reset } from "../features/auth/authSlice";
-import { resetprojects } from "../features/projects/projectSlice";
+} from "../../store/features/issues/issueSlice";
+import { reset } from "../../store/features/auth/authSlice";
+import { resetprojects } from "../../store/features/projects/projectSlice";
 
 function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const { projectId } = useParams();
@@ -41,21 +41,21 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
     (project) => project.project_id === Number(projectId)
   );
 
-  // const handleDel = async (i) => {
-  // dispatch(setIssues([]));
-  // dispatch(resetprojects([]));
-  // dispatch(reset());
-  // const toDeleteIssue = Issues[i];
-  // const del_id = toDeleteIssue.issue_id;
-  // console.log("del id is:", del_id);
-  // try {
-  //   await axios.delete(`http://localhost:3000/home/${del_id}`);
-  //   dispatch(deleteIssue({ issue_id: del_id }));
-  // } catch (error) {
-  //   console.error("Error deleting order:", error);
-  // }
-  //   setUpdateModalOpen(false);
-  // };
+  const handleDel = async () => {
+    dispatch(setIssues([]));
+    dispatch(resetprojects([]));
+    dispatch(reset());
+    // const toDeleteIssue = Issues[i];
+    // const del_id = toDeleteIssue.issue_id;
+    // console.log("del id is:", del_id);
+    // try {
+    //   await axios.delete(`http://localhost:3000/home/${del_id}`);
+    //   dispatch(deleteIssue({ issue_id: del_id }));
+    // } catch (error) {
+    //   console.error("Error deleting order:", error);
+    // }
+    //   setUpdateModalOpen(false);
+  };
 
   const handleSave = async () => {
     console.log("title is", title);
@@ -130,12 +130,9 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
           <div className="title">
             <p>Issue ID - {data.issue_id}</p>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              {/* <button
-                className="btn"
-                onClick={() => handleDel(updateTicket.index)}
-              >
+              <button className="btn" onClick={handleDel}>
                 Delete
-              </button> */}
+              </button>
 
               <IoMdClose
                 style={{ fontSize: "20px", cursor: "pointer" }}
@@ -333,13 +330,13 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
                             >
                               <option value="select">Select an Assignee</option>
 
-                              {selectedProject.projectTeam.map((item, index) =>
+                              {/* {selectedProject.projectTeam.map((item, index) =>
                                 item.teamRole !== "QA" ? (
                                   <option key={index} value={item}>
                                     {item}
                                   </option>
                                 ) : null
-                              )}
+                              )} */}
                             </select>
                           </td>
                         </tr>

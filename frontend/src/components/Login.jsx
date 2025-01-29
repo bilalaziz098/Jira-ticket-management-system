@@ -6,7 +6,7 @@ import img1 from "../assets/images/img1.png";
 import img2 from "../assets/images/img2.png";
 import apple from "../assets/images/apple.png";
 import slack from "../assets/images/slack.png";
-import { loginFailed, loginSuccess } from "../features/auth/authSlice";
+import { loginFailed, loginSuccess } from "../store/features/auth/authSlice";
 import { FaAtlassian } from "react-icons/fa";
 import axios from "axios";
 import "./Login.css";

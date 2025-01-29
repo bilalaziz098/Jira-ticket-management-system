@@ -17,10 +17,10 @@ issueRouter.post('/home', async(req, res) => {
       project_id
     })
 
-    return res.json({message: 'Issue created', issue})
+    return res.status(201).json({message: 'Issue created', issue})
   } catch (error) {
     console.log(error)
-    return res.status(500).json({ message: 'Server error' });
+    return res.status(406).json({ message: 'not acceptable' });
   }
 })
 issueRouter.delete('/home/:id', async (req, res) => {
@@ -32,7 +32,7 @@ issueRouter.delete('/home/:id', async (req, res) => {
     }
 
     await issue.destroy();
-    return res.status(200).json({ message: 'issue deleted successfully' });
+    return res.status(205).json({ message: 'issue deleted successfully' });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Server error' });

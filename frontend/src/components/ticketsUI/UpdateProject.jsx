@@ -3,7 +3,7 @@ import "./UpdateModal.css";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { updateProject } from "../features/projects/projectSlice";
+import { updateProject } from "../../store/features/projects/projectSlice";
 
 function UpdateProject({ setIsModalOpen, updateProjectId }) {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
   const projectData = projects.find(
     (project) => project.project_id === updateProjectId
   );
+
   const [projectName, setProjectName] = useState(projectData.project_name);
   const [projectTeam, setProjectTeam] = useState(projectData.projectTeam);
 

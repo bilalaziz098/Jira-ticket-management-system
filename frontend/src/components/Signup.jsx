@@ -10,7 +10,7 @@ import {
   loginFailed,
   loginSuccess,
   registerUser,
-} from "../features/auth/authSlice";
+} from "../store/features/auth/authSlice";
 import { FaAtlassian } from "react-icons/fa";
 import "./Signup.css";
 import axios from "axios";

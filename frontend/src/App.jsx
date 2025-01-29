@@ -4,7 +4,7 @@ import "./App.css";
 import Authentication from "./pages/Authentication";
 import Layout from "./components/Layout";
 import Signup from "./components/Signup";
-import Projects from "./components/Projects";
+import Projects from "./components/projectUI/Projects";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Page404 from "./components/Page404";
 function App() {
