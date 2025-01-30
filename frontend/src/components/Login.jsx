@@ -11,6 +11,7 @@ import { FaAtlassian } from "react-icons/fa";
 import axios from "axios";
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
+import AuthRoutes from "../routes/AuthRoutes";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -28,25 +29,13 @@ function Login() {
       return;
     }
 
-    try {
-      const response = await axios.post("http://localhost:3000/", {
-        email: email,
-        password: pass,
-      });
-
-      if (response.status === 200) {
-        console.log(response.data);
-        dispatch(loginSuccess({ user: response.data.user }));
-        setEmail("");
-        setPass("");
-      } else {
-        dispatch(loginFailed());
-        alert("Login failure");
-      }
-    } catch (err) {
-      const error = err.response.data.message;
-      setError(error);
-    }
+    AuthRoutes.login({
+      email,
+      pass,
+      setError,
+      dispatch,
+      navigate,
+    });
   };
   const handleSignup = () => {
     navigate("/signup");

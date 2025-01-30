@@ -6,15 +6,10 @@ import img1 from "../assets/images/img1.png";
 import img2 from "../assets/images/img2.png";
 import apple from "../assets/images/apple.png";
 import slack from "../assets/images/slack.png";
-import {
-  loginFailed,
-  loginSuccess,
-  registerUser,
-} from "../store/features/auth/authSlice";
 import { FaAtlassian } from "react-icons/fa";
 import "../styles/Signup.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AuthRoutes from "../routes/AuthRoutes";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -34,23 +29,17 @@ function Signup() {
       return;
     }
 
-    try {
-      const response = await axios.post("http://localhost:3000/signup", {
-        name: name,
-        role: role,
-        email: email,
-        password: pass,
-      });
-      const { data } = response;
-      const { name: user, role: teamRole } = data.user;
-
-      dispatch(registerUser({ user, teamRole }));
-      navigate("/");
-    } catch (err) {
-      const error = err.response.data.message;
-      setError(error);
-    }
+    AuthRoutes.signup({
+      name,
+      role,
+      email,
+      pass,
+      setError,
+      dispatch,
+      navigate,
+    });
   };
+
   const handleSignin = () => {
     navigate("/");
   };

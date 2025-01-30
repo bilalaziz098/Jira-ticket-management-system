@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addProjects } from "../../store/features/projects/projectSlice";
+import ProjectRoutes from "../../routes/ProjectRoutes";
 
 function ProjectModal({ setIsModalOpen }) {
   const { user, registeredUsers } = useSelector((state) => state.auth);
@@ -24,23 +25,14 @@ function ProjectModal({ setIsModalOpen }) {
     setProjectTeam(projectTeam.filter((_, i) => i !== index));
   };
 
-  const projectData = {
-    project_name: projectName,
-    projectTeam,
-  };
   const submitForm = async (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/projects", {
-        project_name: projectName,
-      });
-      const Res = response.data.project.project_id;
-      const data = { ...projectData, project_id: Res };
-      dispatch(addProjects(data));
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+
+    ProjectRoutes.create({
+      project_name: projectName,
+      projectTeam,
+      dispatch,
+    });
 
     setIsModalOpen(false);
   };

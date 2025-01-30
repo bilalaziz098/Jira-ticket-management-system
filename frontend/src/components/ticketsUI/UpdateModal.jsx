@@ -8,14 +8,10 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import axios from "axios";
-import {
-  deleteIssue,
-  setIssues,
-  updateIssue,
-} from "../../store/features/issues/issueSlice";
+import { setIssues } from "../../store/features/issues/issueSlice";
 import { reset } from "../../store/features/auth/authSlice";
 import { resetprojects } from "../../store/features/projects/projectSlice";
+import IssueRoutes from "../../routes/IssueRoutes";
 
 function UpdateModal({ setUpdateModalOpen, updateTicket }) {
   const { projectId } = useParams();
@@ -59,32 +55,17 @@ function UpdateModal({ setUpdateModalOpen, updateTicket }) {
 
   const handleSave = async () => {
     console.log("title is", title);
-    const updatedIssue = {
-      ...data,
+
+    IssueRoutes.update({
+      data,
       assignedTo: assigned,
       analyst,
       user_id: user.user.id,
       title: title,
       description: desc,
       status: status,
-    };
-
-    console.log(updatedIssue);
-    try {
-      const response = await axios.patch(
-        `http://localhost:3000/home/${data.issue_id}`,
-        updatedIssue
-      );
-
-      if (response.status === 200) {
-        console.log(updateIssue);
-        dispatch(
-          updateIssue({ toUpdatedIssue: [updatedIssue], user_id: user.user.id })
-        );
-      }
-    } catch (error) {
-      console.error("Error updating issue:", error);
-    }
+      dispatch,
+    });
   };
 
   useEffect(() => {

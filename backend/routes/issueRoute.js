@@ -7,6 +7,7 @@ dotenv.config()
 
 issueRouter.post('/home', async(req, res) => {
   const {title, description, issueType, user_id, assignedTo, project_id} = req.body;
+  console.log(req.body, "HELELELELE")
   try {
     const issue = await Issue.create({
       title,

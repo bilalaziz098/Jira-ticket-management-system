@@ -4,12 +4,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { addIssues } from "../../store/features/issues/issueSlice";
-import { reset } from "../../store/features/auth/authSlice";
+import IssueRoutes from "../../routes/IssueRoutes";
 
 function TicketModal({ setIsModalOpen }) {
-  const { user, registeredUsers } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   // console.log("Ssasd", user.user.id);
   const { projects } = useSelector((state) => state.projects);
 
@@ -25,44 +23,25 @@ function TicketModal({ setIsModalOpen }) {
   const selectedProject = projects.find(
     (project) => project.project_id === Number(projectId)
   );
-  console.log(selectedProject);
 
   const submitForm = async (event) => {
     event.preventDefault();
 
-    const ticketData = {
+    IssueRoutes.create({
       title,
       description: description,
       issueType: issue,
       project_id: projectId,
       user_id: user.user.id,
       assignedTo,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/home",
-        ticketData
-      );
-      const data = response.data.issue;
-
-      const data1 = { ...data, status, taskType };
-      dispatch(addIssues(data1));
-    } catch (error) {
-      console.log("err", error);
-    }
+      dispatch,
+      status,
+      taskType,
+    });
 
     setIsModalOpen(false);
   };
-  // dispatch(reset());
-  // const handledesc = (e) => {
-  //   // console.log(e);
-  //   setDescription(e.target.value);
-  // };
 
-  // const myself = () => {
-  //   setAssignedTo(user.email);
-  // };
   const assignMyself = () => {
     const me = `${user.user.name} - ${user.user.role}`;
     setAssignedTo(me);

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "../.././styles/UpdateModal.css";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { updateProject } from "../../store/features/projects/projectSlice";
+import ProjectRoutes from "../../routes/ProjectRoutes";
 
 function UpdateProject({ setIsModalOpen, updateProjectId }) {
   const dispatch = useDispatch();
@@ -26,26 +25,12 @@ function UpdateProject({ setIsModalOpen, updateProjectId }) {
     }
   };
   const handleSave = async () => {
-    const updatedProject = {
-      ...projectData,
+    ProjectRoutes.update({
+      projectData,
       project_name: projectName,
       projectTeam: projectTeam,
-    };
-
-    try {
-      const response = await axios.patch(
-        `http://localhost:3000/projects/${projectData.project_id}`,
-        updatedProject
-      );
-
-      if (response.status === 200) {
-        dispatch(updateProject({ toUpdatedProject: [updatedProject] }));
-      }
-    } catch (error) {
-      console.error("Error updating issue:", error);
-    }
-
-    // dispatch(updateProject({ toUpdatedProject: [updatedProject] }));
+      dispatch,
+    });
   };
 
   const handleDel = (index) => {
