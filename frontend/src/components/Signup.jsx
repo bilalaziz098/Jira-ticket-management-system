@@ -12,7 +12,7 @@ import {
   registerUser,
 } from "../store/features/auth/authSlice";
 import { FaAtlassian } from "react-icons/fa";
-import "./Signup.css";
+import "../styles/Signup.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

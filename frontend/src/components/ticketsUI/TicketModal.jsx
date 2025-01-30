@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TicketModal.css";
+import "../.././styles/TicketModal.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";

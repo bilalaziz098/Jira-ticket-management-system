@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Nav";
-import "./Projects.css";
+import "../.././styles/Projects.css";
 import ProjectModal from "./ProjectModal";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";

@@ -9,7 +9,7 @@ import slack from "../assets/images/slack.png";
 import { loginFailed, loginSuccess } from "../store/features/auth/authSlice";
 import { FaAtlassian } from "react-icons/fa";
 import axios from "axios";
-import "./Login.css";
+import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 
 function Login() {

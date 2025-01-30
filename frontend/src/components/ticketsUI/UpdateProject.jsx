@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UpdateModal.css";
+import "../.././styles/UpdateModal.css";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";

@@ -5,7 +5,7 @@ import { FaCode } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { AiFillFileAdd } from "react-icons/ai";
 import { IoIosSettings, IoIosLogOut } from "react-icons/io";
-import "./SideNav.css";
+import "../styles/SideNav.css";
 import { logout } from "../store/features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
