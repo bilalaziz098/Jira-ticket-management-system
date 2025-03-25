@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <>
       {!isAuthenticated ? <Link to="/"></Link> : <Link to="/projects"></Link>}
-
+      git name
       <Outlet />
     </>
   );
